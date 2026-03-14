@@ -3,6 +3,9 @@ name: Tahoe Beta 1 Recovery Image
 on:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: macos-latest
@@ -26,7 +29,7 @@ jobs:
           cp -R '/Volumes/Install macOS Beta/BaseSystem' /tmp/BaseSystem
 
       - name: Upload com.apple.recovery.boot
-        uses:  actions/upload-artifact@v4.6.0
+        uses: actions/upload-artifact@v4.6.0
         with:
           name: com.apple.recovery.boot
           path: /tmp/BaseSystem/*
